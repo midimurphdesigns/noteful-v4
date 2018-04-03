@@ -16,10 +16,10 @@ const noteful = (function () {
   }
 
   function handleErrors(err) {
-    // if (err.status === 401) {
-    // store.authorized = false;
-    // noteful.render();
-    // }
+    if (err.status === 401) {
+      store.authorized = false;
+      noteful.render();
+    }
     showFailureMessage(err.responseJSON.message);
   }
 
@@ -299,7 +299,7 @@ const noteful = (function () {
     });
   }
 
-  /**
+  /*
    * TAGS EVENT LISTENERS AND HANDLERS
    */
   function handleTagClick() {
@@ -396,10 +396,9 @@ const noteful = (function () {
 
       api.create('/api/login', loginUser)
         .then(response => {
+          store.authToken = response.authToken;
           store.authorized = true;
           loginForm[0].reset();
-
-          store.currentUser = response;
 
           return Promise.all([
             api.search('/api/notes'),
@@ -434,6 +433,8 @@ const noteful = (function () {
 
     handleSignupSubmit();
     handleLoginSubmit();
+
+    handleErrors();
   }
 
   // This object contains the only exposed methods from this module:
