@@ -35,7 +35,8 @@ function validateTagIds(userId, tags = []) {
 const router = express.Router();
 
 // Protect endpoints using JWT Strategy
-router.use('/notes', passport.authenticate('jwt', { session: false, failWithError: true }));
+// endpoints protected in server.js so I commented this out
+// router.use('/notes', passport.authenticate('jwt', { session: false, failWithError: true }));
 
 /* ========== GET/READ ALL ITEMS ========== */
 router.get('/notes', (req, res, next) => {
@@ -44,10 +45,8 @@ router.get('/notes', (req, res, next) => {
 
   let filter = { userId };
 
-  /**
-   * BONUS CHALLENGE - Search both title and content using $OR Operator
-   *   filter.$or = [{ 'title': { $regex: re } }, { 'content': { $regex: re } }];
-  */
+  // BONUS CHALLENGE - Search both title and content using $OR Operator
+  filter.$or = [{ 'title': { $regex: re } }, { 'content': { $regex: re } }];
 
   if (searchTerm) {
     const re = new RegExp(searchTerm, 'i');

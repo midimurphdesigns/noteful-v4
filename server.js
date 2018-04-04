@@ -6,6 +6,7 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const passport = require('passport');
+
 const localStrategy = require('./passport/local');
 const jwtStrategy = require('./passport/jwt');
 
@@ -35,14 +36,14 @@ app.use(express.static('public'));
 // Utilize the Express `.json()` body parser
 app.use(express.json());
 
-// unprotected routes
+// mounting unprotected routes
 app.use('/api', usersRouter);
 app.use('/api', authRouter);
 
 // Endpoints below this require a valid JWT
 app.use(passport.authenticate('jwt', { session: false, failWithError: true }));
 
-// Mount routers
+// Mount protected routers
 app.use('/api', notesRouter);
 app.use('/api', foldersRouter);
 app.use('/api', tagsRouter);

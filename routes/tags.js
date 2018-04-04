@@ -9,7 +9,9 @@ const Note = require('../models/note');
 
 const router = express.Router();
 
-router.use('/tags', passport.authenticate('jwt', { session: false, failWithError: true }));
+// Protect endpoints using JWT Strategy
+// endpoints protected in server.js so I commented this out
+// router.use('/notes', passport.authenticate('jwt', { session: false, failWithError: true }));
 
 /* ========== GET/READ ALL ITEMS ========== */
 router.get('/tags', (req, res, next) => {
