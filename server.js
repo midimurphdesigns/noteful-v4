@@ -35,7 +35,7 @@ app.use(express.static('public'));
 // Utilize the Express `.json()` body parser
 app.use(express.json());
 
-// unprotected routes (am i right on this?)
+// unprotected routes
 app.use('/api', usersRouter);
 app.use('/api', authRouter);
 
