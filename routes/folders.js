@@ -10,7 +10,8 @@ const Note = require('../models/note');
 const router = express.Router();
 
 // Protect endpoints using JWT Strategy
-router.use('/folders', passport.authenticate('jwt', { session: false, failWithError: true }));
+// endpoints protected in server.js so I commented this out
+// router.use('/notes', passport.authenticate('jwt', { session: false, failWithError: true }));
 
 /* ========== GET/READ ALL ITEMS ========== */
 router.get('/folders', (req, res, next) => {

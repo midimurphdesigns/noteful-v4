@@ -46,7 +46,7 @@ router.get('/notes', (req, res, next) => {
   let filter = { userId };
 
   // BONUS CHALLENGE - Search both title and content using $OR Operator
-  filter.$or = [{ 'title': { $regex: re } }, { 'content': { $regex: re } }];
+  // filter.$or = [{ 'title': { $regex: re } }, { 'content': { $regex: re } }];
 
   if (searchTerm) {
     const re = new RegExp(searchTerm, 'i');
