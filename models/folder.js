@@ -3,7 +3,7 @@
 const mongoose = require('mongoose');
 
 const folderSchema = new mongoose.Schema({
-  name: { type: String},
+  name: { type: String },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
@@ -17,15 +17,15 @@ folderSchema.set('toObject', {
   }
 });
 
-/** BONUS CHALLENGE
- * Move the cascading delete or cascade set null into the schema
-folderSchema.pre('remove', function(next) {
-  mongoose.models.Note.remove({folderId: this._id})
+// BONUS CHALLENGE
+// Move the cascading delete or cascade set null into the schema
+folderSchema.pre('remove', function (next) {
+  mongoose.models.Note.remove({ folderId: this._id })
     .then(() => next())
     .catch(err => {
       next(err);
     });
 });
-*/
+
 
 module.exports = mongoose.model('Folder', folderSchema);
