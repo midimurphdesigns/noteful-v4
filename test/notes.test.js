@@ -61,7 +61,7 @@ describe('Noteful API - Notes', function () {
       const dbPromise = Note.find({ userId: user.id });
       const apiPromise = chai.request(app)
         .get('/api/notes')
-        .set('Authorization', `Bearer ${token}`); 
+        .set('Authorization', `Bearer ${token}`);  
 
       return Promise.all([dbPromise, apiPromise])
         .then(([data, res]) => {
