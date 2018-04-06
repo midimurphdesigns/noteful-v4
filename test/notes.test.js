@@ -22,9 +22,9 @@ const expect = chai.expect;
 
 chai.use(chaiHttp);
 
-describe.only('Noteful API - Notes', function () {
+describe('Noteful API - Notes', function () {
 
-  let user = {};
+  let user;
   let token;
 
   before(function () {
@@ -45,11 +45,6 @@ describe.only('Noteful API - Notes', function () {
       user = users[0];
       token = jwt.sign({ user }, JWT_SECRET, { subject: user.username });
     });
-
-    // const noteInsertPromise = Note.insertMany(seedNotes);
-    // const folderInsertPromise = Folder.insertMany(seedFolders);
-    // return Promise.all([noteInsertPromise, folderInsertPromise])
-    //   .then(() => Note.ensureIndexes());
   });
 
   afterEach(function () {

@@ -41,12 +41,13 @@ app.use('/api', usersRouter);
 app.use('/api', authRouter);
 
 // Endpoints below this require a valid JWT
-app.use(passport.authenticate('jwt', { session: false, failWithError: true }));
+// app.use(passport.authenticate('jwt', { session: false, failWithError: true }));
+const jwtAuth = (passport.authenticate('jwt', { session: false, failWithError: true }));
 
 // Mount protected routers
-app.use('/api', notesRouter);
-app.use('/api', foldersRouter);
-app.use('/api', tagsRouter);
+app.use('/api', jwtAuth, notesRouter);
+app.use('/api', jwtAuth, foldersRouter);
+app.use('/api', jwtAuth, tagsRouter);
 
 // Catch-all 404
 app.use(function (req, res, next) {
