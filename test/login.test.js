@@ -42,7 +42,7 @@ describe('Noteful API - Login', function () {
     return mongoose.disconnect();
   });
 
-  describe.only('Noteful /api/login', function () {
+  describe('Noteful /api/login', function () {
     describe('POST', function () {
 
       it('should return a valid auth token', function () {
