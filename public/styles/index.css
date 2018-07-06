@@ -306,3 +306,10 @@ select {
 .signup-login {
   background-color: #353d44;
 }
+
+.demo-account {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+}
